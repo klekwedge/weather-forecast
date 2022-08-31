@@ -1,7 +1,9 @@
 import React from "react";
+import City from '../Components/City/City';
 
 function CityListPage() {
-  return <h1>CityListPage</h1>;
+  
+  return <div><City /></div>;
 }
 
 export default CityListPage;

@@ -30,7 +30,7 @@ function CityListPage() {
         color="white"
         mb="15px"
       />
-      <Button onClick={test}>Click</Button>
+      <Button onClick={test} colorScheme='blue'>Add city</Button>
       <List display="flex" gap="40px 20px" p="20px" flexWrap="wrap">
         {cities.length > 0
           ? cities.map((city) => <City key={uuidv4()} city={city} />)

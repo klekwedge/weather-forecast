@@ -1,9 +1,13 @@
 import React from "react";
+import { Box } from "@chakra-ui/react";
+import { Link } from 'react-router-dom';
+import { FaExternalLinkAlt } from "react-icons/fa";
+import OpenWeather from "../../services/OpenWeatherApi";
 import { CityProps } from "./City.props";
 import "./City.scss";
 
 function City({ city }: CityProps) {
-  console.log(city);
+  const { getWeatherIcon } = OpenWeather();
 
   const days = [
     "Sunday",
@@ -28,12 +32,23 @@ function City({ city }: CityProps) {
           </span>
         </div>
         <div className="weather-container">
-          <i className="weather-icon" data-feather="sun" />
-          <h1 className="weather-temp">{(city.main.temp - 273.15).toFixed(2)}°C</h1>
+          <img
+            src={getWeatherIcon(city.weather[0].icon)}
+            alt={city.weather[0].main}
+          />
+          <h1 className="weather-temp">
+            {(city.main.temp - 273.15).toFixed(0)}°C
+          </h1>
           <h3 className="weather-desc">
             {city.weather.map((weatherItem) => weatherItem.main)}
           </h3>
         </div>
+        <Box position="absolute" top="20px" right="20px">
+          <Link to={`/${city.id}`}>
+            {" "}
+            <FaExternalLinkAlt cursor="pointer" size="18" />
+          </Link>
+        </Box>
       </div>
     </li>
   );

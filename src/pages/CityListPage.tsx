@@ -25,11 +25,13 @@ function CityListPage() {
       <Input
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
+        placeholder="Enter the name of the city"
+        _placeholder={{ color: 'gray' }}
         color="white"
         mb="15px"
       />
       <Button onClick={test}>Click</Button>
-      <List display="flex" gap="40px 20px" p='20px' flexWrap='wrap'>
+      <List display="flex" gap="40px 20px" p="20px" flexWrap="wrap">
         {cities.length > 0
           ? cities.map((city) => <City key={uuidv4()} city={city} />)
           : null}

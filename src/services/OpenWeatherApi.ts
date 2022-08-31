@@ -5,9 +5,16 @@ function OpenWeather() {
     return `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`;
   }
 
+  function getWeatherIcon(iconName: string) {
+    return `http://openweathermap.org/img/wn/${iconName}@2x.png`
+      ;
+  }
+
+
 
   return {
-    getCity
+    getCity,
+    getWeatherIcon
   };
 }
 

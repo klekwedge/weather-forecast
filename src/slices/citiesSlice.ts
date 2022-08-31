@@ -5,26 +5,28 @@ import { CitiesState, ICity } from './citiesSlice.types';
 
 const initialState: CitiesState = {
   cities: [],
-  citiesLoadingStatus: 'idle',  
+  citiesLoadingStatus: 'idle',
 };
 
-export const fetchCity= createAsyncThunk('cities/fetchCity', (url: string) => {
+export const fetchCity = createAsyncThunk('cities/fetchCity', (url: string) => {
   const { request } = useHttp();
   return request(url);
 });
+
+
 
 const citiesSlice = createSlice({
   name: 'cities',
   initialState,
   reducers: {
-  
+
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCity.pending, (state) => {
         state.citiesLoadingStatus = 'loading';
       })
-      .addCase(fetchCity.fulfilled, (state, action:PayloadAction<ICity>) => {
+      .addCase(fetchCity.fulfilled, (state, action: PayloadAction<ICity>) => {
         state.citiesLoadingStatus = 'idle';
         state.cities.push(action.payload);
       })

@@ -1,8 +1,10 @@
 
 export interface CitiesState {
   cities: ICity[],
-  citiesLoadingStatus: 'idle' | 'loading' | 'error'
+  citiesLoadingStatus: LoadingStatus,
 };
+
+type LoadingStatus = 'idle' | 'loading' | 'error';
 
 export interface ICity {
   coord: Coord;

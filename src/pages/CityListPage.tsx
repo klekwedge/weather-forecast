@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Input } from "@chakra-ui/react";
+import { Button, Input, List } from "@chakra-ui/react";
 import { v4 as uuidv4 } from "uuid";
 import OpenWeather from "../services/OpenWeatherApi";
 import { fetchCity } from "../slices/citiesSlice";
@@ -26,12 +26,14 @@ function CityListPage() {
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
         color="white"
-        mb='15px'
+        mb="15px"
       />
       <Button onClick={test}>Click</Button>
-      {cities.length > 0
-        ? cities.map((city) => <City key={uuidv4()} city={city} />)
-        : null}
+      <List display="flex" gap="40px 20px" p='20px' flexWrap='wrap'>
+        {cities.length > 0
+          ? cities.map((city) => <City key={uuidv4()} city={city} />)
+          : null}
+      </List>
     </div>
   );
 }

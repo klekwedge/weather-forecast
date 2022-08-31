@@ -2,14 +2,19 @@
   --gradient: linear-gradient(135deg, #72edf2 10%, #5151e5 100%);
 }
 
-
-.container {
+.city {
   border-radius: 25px;
   -webkit-box-shadow: 0 0 70px -10px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 70px -10px rgba(0, 0, 0, 0.2);
   background-color: #222831;
-  color: #ffffff;
+  color: white;
   height: 400px;
+  transition: all 0.4s ease;
+}
+
+.city:hover {
+  cursor: pointer;
+  transform: scale(1.03);
 }
 
 .weather-side {
@@ -172,43 +177,3 @@
   margin: 10px 0 0 0;
   font-weight: 700;
 }
-
-.location-container {
-  padding: 25px 35px;
-}
-
-.location-button {
-  outline: none;
-  width: 100%;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  border: none;
-  border-radius: 25px;
-  padding: 10px;
-  font-family: "Montserrat", sans-serif;
-  background-image: var(--gradient);
-  color: #ffffff;
-  font-weight: 700;
-  -webkit-box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.25);
-  box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.25);
-  cursor: pointer;
-  -webkit-transition: -webkit-transform 200ms ease;
-  transition: -webkit-transform 200ms ease;
-  -o-transition: transform 200ms ease;
-  transition: transform 200ms ease;
-  transition: transform 200ms ease, -webkit-transform 200ms ease;
-}
-
-.location-button:hover {
-  -webkit-transform: scale(0.95);
-  -ms-transform: scale(0.95);
-  transform: scale(0.95);
-}
-
-.location-button .feather {
-  height: 1em;
-  width: auto;
-  margin-right: 5px;
-}
-
-

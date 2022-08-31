@@ -3,7 +3,7 @@ import { Button, Input, List } from "@chakra-ui/react";
 import { v4 as uuidv4 } from "uuid";
 import OpenWeather from "../services/OpenWeatherApi";
 import { fetchCity } from "../slices/citiesSlice";
-import City from "../Components/City/City";
+import CityItem from "../Components/CityItem/CityItem";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hook";
 
 function CityListPage() {
@@ -18,6 +18,7 @@ function CityListPage() {
 
   function test() {
     dispatch(fetchCity(getCity(inputValue)));
+    setInputValue('')
   }
 
   return (
@@ -33,7 +34,7 @@ function CityListPage() {
       <Button onClick={test} colorScheme='blue'>Add city</Button>
       <List display="flex" gap="40px 20px" p="20px" flexWrap="wrap">
         {cities.length > 0
-          ? cities.map((city) => <City key={uuidv4()} city={city} />)
+          ? cities.map((city) => <CityItem key={uuidv4()} city={city} />)
           : null}
       </List>
     </div>

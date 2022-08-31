@@ -6,6 +6,8 @@ import { CitiesState, ICity } from './citiesSlice.types';
 const initialState: CitiesState = {
   cities: [],
   citiesLoadingStatus: 'idle',
+  currentCity: null,
+  currentCityLoadingStatus: 'idle',
 };
 
 export const fetchCity = createAsyncThunk('cities/fetchCity', (url: string) => {
@@ -13,6 +15,10 @@ export const fetchCity = createAsyncThunk('cities/fetchCity', (url: string) => {
   return request(url);
 });
 
+export const fetchCityById = createAsyncThunk('cities/fetchCityById', (url: string) => {
+  const { request } = useHttp();
+  return request(url);
+});
 
 
 const citiesSlice = createSlice({
@@ -32,6 +38,16 @@ const citiesSlice = createSlice({
       })
       .addCase(fetchCity.rejected, (state) => {
         state.citiesLoadingStatus = 'error';
+      })
+      .addCase(fetchCityById.pending, (state) => {
+        state.currentCityLoadingStatus = 'loading';
+      })
+      .addCase(fetchCityById.fulfilled, (state, action) => {
+        state.citiesLoadingStatus = 'idle';
+        state.currentCity = action.payload;
+      })
+      .addCase(fetchCityById.rejected, (state) => {
+        state.currentCityLoadingStatus = 'error';
       })
       .addDefaultCase(() => { });
   },

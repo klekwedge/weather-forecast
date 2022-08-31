@@ -2,6 +2,8 @@
 export interface CitiesState {
   cities: ICity[],
   citiesLoadingStatus: LoadingStatus,
+  currentCity: ICity | null,
+  currentCityLoadingStatus: LoadingStatus,
 };
 
 type LoadingStatus = 'idle' | 'loading' | 'error';

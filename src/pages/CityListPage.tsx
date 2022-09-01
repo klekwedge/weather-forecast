@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import {
@@ -69,30 +70,32 @@ function CityListPage() {
         <title>City List - Weather App</title>
       </Helmet>
       <main>
-        <FormControl>
-          <FormLabel>Add city</FormLabel>
-          <Box display="flex" gap="20px">
-            <Input
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              placeholder="Enter the name of the city"
-              _placeholder={{ color: "gray" }}
-              color="white"
-              mb="15px"
-            />
-            <Button type="button" colorScheme="blue" onClick={addCityToList}>
-              Add city
-            </Button>
-          </Box>
-        </FormControl>
-        <Button type="button" colorScheme="teal">
-          <Link to="/my-location"> My location</Link>
-        </Button>
-        <List display="flex" gap="40px 20px" pt="50px" flexWrap="wrap">
-          {cities.length > 0
-            ? cities.map((city) => <CityItem key={city.id} city={city} />)
-            : null}
-        </List>
+        <AnimatePresence>
+          <FormControl>
+            <FormLabel>Add city</FormLabel>
+            <Box display="flex" gap="20px">
+              <Input
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                placeholder="Enter the name of the city"
+                _placeholder={{ color: "gray" }}
+                color="white"
+                mb="15px"
+              />
+              <Button type="button" colorScheme="blue" onClick={addCityToList}>
+                Add city
+              </Button>
+            </Box>
+          </FormControl>
+          <Button type="button" colorScheme="teal">
+            <Link to="/my-location"> My location</Link>
+          </Button>
+          <List display="flex" gap="40px 20px" pt="50px" flexWrap="wrap">
+            {cities.length > 0
+              ? cities.map((city) => <CityItem key={city.id} city={city} />)
+              : null}
+          </List>
+        </AnimatePresence>
       </main>
     </>
   );

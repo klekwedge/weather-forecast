@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import OpenWeather from "../services/OpenWeatherApi";
 import { fetchCity, fetchCityForecast } from "../slices/citiesSlice";
 import City from "../Components/City/City";
-import ErrorMessage from '../Components/ErrorMessage/ErrorMessage';
+import ErrorMessage from "../Components/ErrorMessage/ErrorMessage";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hook";
 import Spinner from "../Components/Spinner/Spinner";
 
@@ -26,15 +26,16 @@ function CityPage() {
     return <Spinner />;
   }
 
-  if (cityId && Number.isNaN(+cityId)) {
+  if (
+    (cityId && Number.isNaN(+cityId)) ||
+    currentCityLoadingStatus === "error"
+  ) {
     return <ErrorMessage errorTitle="Invalid city id" />;
   }
 
   if (!currentCity || !fewDaysForecastCity) {
     return null;
   }
-
-  console.log(currentCity);
 
   return (
     <>

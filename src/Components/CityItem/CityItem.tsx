@@ -28,13 +28,12 @@ function CityItem({ city }: CityItemProps) {
   }
 
   return (
-    <li className="city">
+    <li className="city__item">
       <div className="weather-side">
         <div className="weather-gradient" />
         <div className="date-container">
           <h2 className="date-dayname">{days[new Date().getDay()]}</h2>
           <span className="date-day">{new Date().toLocaleDateString()}</span>
-          <i className="location-icon" data-feather="map-pin" />
           <span className="location">
             {city.name}, {city.sys.country}
           </span>
@@ -49,6 +48,9 @@ function CityItem({ city }: CityItemProps) {
           </h1>
           <h3 className="weather-desc">
             {city.weather.map((weatherItem) => weatherItem.main)}
+          </h3>
+          <h3 className="weather-desc">
+            Wind speed: {city.wind.speed}
           </h3>
         </div>
         <Flex

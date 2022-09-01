@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from "react";
 import { Box } from "@chakra-ui/react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Spinner from '../Spinner/Spinner';
 
 const CityListPage = lazy(() => import("../../pages/CityListPage"));
 const CityPage = lazy(() => import("../../pages/CityPage"));
@@ -11,7 +12,7 @@ function App() {
   return (
     <Router>
       <Box maxW='1200px' margin='0 auto' p="10px 20px" className="flex flex-col items-center">
-        <Suspense fallback={<h2>Loading...</h2>}>
+        <Suspense fallback={<Spinner/>}>
           <Routes>
             <Route path="/" element={<CityListPage />} />
             <Route path="/:cityId" element={<CityPage />} />

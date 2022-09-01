@@ -1,53 +1,28 @@
-.city__block {
-  max-width: 1250px;
-  margin: 0 auto;
+.city {
   border-radius: 20px;
-  padding-bottom: 40px;
   box-shadow: 0 0 70px -10px rgba(0, 0, 0, 0.2);
   background-color: #222831;
   color: #ffffff;
-  height: 100%;
   display: flex;
   justify-content: center;
   flex-direction: column;
   gap: 30px;
 
-  .weather-side {
+  &__weather {
     display: flex;
     justify-content: space-between;
-    padding: 10px 20px;
-    position: relative;
     height: 100%;
     min-height: 350px;
-    width: 100%;
-    max-width: 1250px;
-    box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.2);
+    padding: 20px 30px;
     background: #3182ce;
     border-radius: 20px 20px 0px 0px;
   }
 
-  .date-day {
-    display: block;
-  }
-
-  .weather-icon.feather {
-    height: 60px;
-    width: auto;
-  }
-
   .weather-temp {
-    margin: 0;
     font-weight: 700;
     font-size: 50px;
   }
 
-  .info-side {
-    position: relative;
-    height: 100%;
-    min-width: 300px;
-    padding-top: 25px;
-    border-radius: 0px 0px 20px 20px;
-  }
 
   .today-info {
     padding: 15px;
@@ -56,7 +31,7 @@
     gap: 20px;
   }
 
-  .today-info > * {
+  .today-info > div {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -73,8 +48,7 @@
     justify-content: center;
     gap: 20px;
     list-style-type: none;
-    padding: 10px;
-    margin: 10px 35px;
+    padding: 20px 15px;
     box-shadow: 0 0 50px -5px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
   }
@@ -86,6 +60,7 @@
     background: #fff;
     color: #222831;
     border-radius: 10px;
+    flex: 0 1 18%;
   }
 
   .week-list > li:hover {

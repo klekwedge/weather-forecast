@@ -45,7 +45,9 @@ const citiesSlice = createSlice({
       })
       .addCase(fetchCity.fulfilled, (state, action: PayloadAction<ICity>) => {
         state.citiesLoadingStatus = 'idle';
-        state.cities.push(action.payload);
+        if (!state.cities.find(city => city.id === action.payload.id)) {
+          state.cities.push(action.payload);
+        }
       })
       .addCase(fetchCity.rejected, (state) => {
         state.citiesLoadingStatus = 'error';
@@ -54,7 +56,7 @@ const citiesSlice = createSlice({
         state.currentCityLoadingStatus = 'loading';
       })
       .addCase(fetchCityById.fulfilled, (state, action) => {
-        state.citiesLoadingStatus = 'idle';
+        state.currentCityLoadingStatus = 'idle';
         state.currentCity = action.payload;
       })
       .addCase(fetchCityById.rejected, (state) => {

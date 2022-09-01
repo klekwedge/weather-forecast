@@ -19,11 +19,12 @@ function City({ city, fewDaysForecastCity }: CityProps) {
     "Saturday"
   ];
 
+
   return (
-    <div className="city__block">
-      <div className="weather-side">
+    <div className="city">
+      <div className="city__weather">
         <div>
-          <div className="date-container">
+          <div>
             <h1 className="location">
               {city.name}, {city.sys.country}
             </h1>
@@ -31,7 +32,7 @@ function City({ city, fewDaysForecastCity }: CityProps) {
               {new Date().toLocaleDateString()} {days[new Date().getDay()]}
             </h2>
           </div>
-          <div className="weather-container">
+          <div>
             <img
               src={getWeatherIcon(city.weather[0].icon)}
               alt={city.weather[0].main}
@@ -58,7 +59,6 @@ function City({ city, fewDaysForecastCity }: CityProps) {
           </div>
         </div>
       </div>
-      <div className="info-side">
         <ul className="week-list">
           {fewDaysForecastCity.list.map((day) => (
             <li key={uuidv4()}>
@@ -78,7 +78,6 @@ function City({ city, fewDaysForecastCity }: CityProps) {
             </li>
           ))}
         </ul>
-      </div>
     </div>
   );
 }

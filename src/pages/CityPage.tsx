@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import OpenWeather from "../services/OpenWeatherApi";
-import { fetchCityById, fetchCityForecast } from "../slices/citiesSlice";
+import { fetchCity, fetchCityForecast } from "../slices/citiesSlice";
 import City from "../Components/City/City";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hook";
 import Spinner from '../Components/Spinner/Spinner';
@@ -15,7 +15,7 @@ function CityPage() {
 
   useEffect(() => {
     if (cityId) {
-      dispatch(fetchCityById(getCityById(cityId)));
+      dispatch(fetchCity(getCityById(+cityId)));
       dispatch(fetchCityForecast(getWeatherSeveralDays(cityId)));
     }
   }, [cityId]);
@@ -24,7 +24,6 @@ function CityPage() {
     return <Spinner/>;
   }
 
-  console.log(currentCityLoadingStatus);
 
   if (!currentCity || !fewDaysForecastCity) {
     return null;

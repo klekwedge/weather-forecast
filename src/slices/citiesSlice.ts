@@ -12,12 +12,12 @@ const initialState: CitiesState = {
   fewDaysForecastCityLoadingStatus: 'idle',
 };
 
-export const fetchCity = createAsyncThunk('cities/fetchCity', (url: string) => {
+export const fetchCityForList = createAsyncThunk('cities/fetchCityForList', (url: string) => {
   const { request } = useHttp();
   return request(url);
 });
 
-export const fetchCityById = createAsyncThunk('cities/fetchCityById', (url: string) => {
+export const fetchCity = createAsyncThunk('cities/fetchCity', (url: string) => {
   const { request } = useHttp();
   return request(url);
 });
@@ -26,6 +26,12 @@ export const fetchCityForecast = createAsyncThunk('cities/fetchCityForecast', (u
   const { request } = useHttp();
   return request(url);
 });
+
+export const updateCityForList = createAsyncThunk('cities/updateCityForList', (url: string) => {
+  const { request } = useHttp();
+  return request(url);
+});
+
 
 const citiesSlice = createSlice({
   name: 'cities',
@@ -40,26 +46,41 @@ const citiesSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchCity.pending, (state) => {
+      .addCase(fetchCityForList.pending, (state) => {
         state.citiesLoadingStatus = 'loading';
       })
-      .addCase(fetchCity.fulfilled, (state, action: PayloadAction<ICity>) => {
+      .addCase(fetchCityForList.fulfilled, (state, action: PayloadAction<ICity>) => {
         state.citiesLoadingStatus = 'idle';
+        console.log(action.payload);
         if (!state.cities.find(city => city.id === action.payload.id)) {
-          state.cities.push(action.payload);
+          state.cities.push({...action.payload, updateTime: new Date().toLocaleTimeString()});
         }
       })
-      .addCase(fetchCity.rejected, (state) => {
+      .addCase(fetchCityForList.rejected, (state) => {
         state.citiesLoadingStatus = 'error';
       })
-      .addCase(fetchCityById.pending, (state) => {
+      .addCase(updateCityForList.pending, (state) => {
+        state.citiesLoadingStatus = 'loading';
+      })
+      .addCase(updateCityForList.fulfilled, (state, action: PayloadAction<ICity>) => {
+        state.cities = state.cities.map(item => {
+          if (item.id === action.payload.id) {
+            return {...action.payload, updateTime: new Date().toLocaleTimeString()};
+          }
+          return item;
+        });
+      })
+      .addCase(updateCityForList.rejected, (state) => {
+        state.citiesLoadingStatus = 'error';
+      })
+      .addCase(fetchCity.pending, (state) => {
         state.currentCityLoadingStatus = 'loading';
       })
-      .addCase(fetchCityById.fulfilled, (state, action) => {
+      .addCase(fetchCity.fulfilled, (state, action) => {
         state.currentCityLoadingStatus = 'idle';
         state.currentCity = action.payload;
       })
-      .addCase(fetchCityById.rejected, (state) => {
+      .addCase(fetchCity.rejected, (state) => {
         state.currentCityLoadingStatus = 'error';
       })
       .addCase(fetchCityForecast.pending, (state) => {

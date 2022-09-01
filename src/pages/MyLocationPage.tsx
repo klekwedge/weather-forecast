@@ -1,7 +1,7 @@
 import React, { createRef, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hook";
 import OpenWeather from "../services/OpenWeatherApi";
-import { fetchCityById, fetchCityForecast } from "../slices/citiesSlice";
+import { fetchCity, fetchCityForecast } from "../slices/citiesSlice";
 import City from "../Components/City/City";
 import Spinner from "../Components/Spinner/Spinner";
 
@@ -16,7 +16,7 @@ function MyLocationPage() {
 
   function sendPosition(position: GeolocationPosition) {
     dispatch(
-      fetchCityById(
+      fetchCity(
         getCityByCoord(position.coords.latitude, position.coords.longitude)
       )
     );

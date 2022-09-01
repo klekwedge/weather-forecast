@@ -46,12 +46,12 @@ function CityItem({ city }: CityItemProps) {
           <h1 className="weather-temp">
             {(city.main.temp - 273.15).toFixed(0)}°C
           </h1>
-          <h3 className="weather-desc">
+          <h3>
             {city.weather.map((weatherItem) => weatherItem.main)}
           </h3>
-          <h3 className="weather-desc">
-            Wind speed: {city.wind.speed}
-          </h3>
+          <h3 className="weather-desc">Wind speed: {city.wind.speed}</h3>
+          <h3 className="update">Last server update: {`${new Date(city.dt * 1000).toLocaleTimeString()}`}</h3>
+          <h3 className="update">Latest query update: {`${city.updateTime}`}</h3>
         </div>
         <Flex
           position="absolute"

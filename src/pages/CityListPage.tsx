@@ -10,13 +10,22 @@ import {
 } from "@chakra-ui/react";
 
 import OpenWeather from "../services/OpenWeatherApi";
-import { addLocalCities, fetchCity } from "../slices/citiesSlice";
+import {
+  addLocalCities,
+  fetchCityForList,
+  updateCityForList
+  // updateCityForList,
+  // updateCities
+} from "../slices/citiesSlice";
 import CityItem from "../Components/CityItem/CityItem";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hook";
+import { ICity } from "../slices/citiesSlice.types";
 
 function CityListPage() {
+  const updateInterval =  50 * 1000;
   const { cities } = useAppSelector((state) => state.cities);
-  const { getCity } = OpenWeather();
+  const [updates, setUpdates] = useState(0);
+  const { getCity, getCityById } = OpenWeather();
   const [inputValue, setInputValue] = useState("");
 
   const dispatch = useAppDispatch();
@@ -30,11 +39,28 @@ function CityListPage() {
   }, []);
 
   useEffect(() => {
+    const interval = setInterval(() => {
+      // eslint-disable-next-line @typescript-eslint/no-shadow
+      setUpdates((updates) => updates + 1);
+    }, updateInterval);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (cities.length > 0) {
+      cities.map((city) => dispatch(updateCityForList(getCityById(city.id))));
+    }
+  }, [updates]);
+
+  useEffect(() => {
     localStorage.setItem("savedCities", JSON.stringify(cities));
   }, [cities]);
 
   function addCityToList() {
-    dispatch(fetchCity(getCity(inputValue)));
+    dispatch(fetchCityForList(getCity(inputValue)));
+    if (cities.length > 0) {
+      cities.map((city) => dispatch(updateCityForList(getCityById(city.id))));
+    }
     setInputValue("");
   }
 

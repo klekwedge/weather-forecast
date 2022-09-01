@@ -24,6 +24,7 @@ export interface ICity {
   id: number;
   name: string;
   cod: number;
+  updateTime: string
 }
 
 export interface Clouds {

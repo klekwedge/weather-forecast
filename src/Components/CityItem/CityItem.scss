@@ -3,12 +3,13 @@
 .city__item {
   border-radius: 25px;
   box-shadow: 0 0 70px -10px rgba(0, 0, 0, 0.2);
-  background-color: #222831;
   color: white;
-  height: 400px;
+  height: 420px;
   transition: all 0.4s ease;
-  position: relative;
   flex: 0 1 23%;
+  padding: 10px 20px;
+  background: #2B6CB0;
+  position: relative;
 }
 
 .city__item:hover {
@@ -16,26 +17,10 @@
 }
 
 .weather-side {
-  position: relative;
   height: 100%;
   border-radius: 25px;
   width: 100%;
-  box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.2);
   transition: transform 300ms ease;
-  transform: translateZ(0) scale(1.02) perspective(1000px);
-  float: left;
-  background: #2B6CB0;
-}
-
-
-.date-container {
-  position: absolute;
-  top: 25px;
-  left: 25px;
-}
-
-.date-dayname {
-  margin: 0;
 }
 
 .date-day {
@@ -54,11 +39,7 @@
   margin-right: 5px;
 }
 
-.weather-container {
-  position: absolute;
-  bottom: 25px;
-  left: 25px;
-}
+
 
 .weather-icon.feather {
   height: 60px;
@@ -72,5 +53,9 @@
 }
 
 .weather-desc {
-  margin: 0;
+  margin-bottom: 15px;
+}
+
+.update{
+  font-style: italic;
 }

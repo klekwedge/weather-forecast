@@ -10,7 +10,7 @@ function OpenWeather() {
       ;
   }
 
-  function getCityById(cityId: string) {
+  function getCityById(cityId: number) {
     return `https://api.openweathermap.org/data/2.5/weather?id=${cityId}&appid=${apiKey}`
       ;
   }

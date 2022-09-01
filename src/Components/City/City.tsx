@@ -1,13 +1,16 @@
 import React from "react";
 import { Box } from "@chakra-ui/react";
-import { Link } from 'react-router-dom';
+import { v4 as uuidv4 } from "uuid";
+import { Link } from "react-router-dom";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import OpenWeather from "../../services/OpenWeatherApi";
 import { CityProps } from "./City.props";
 import "./City.scss";
 
-function City({ city }: CityProps) {
+function City({ city, fewDaysForecastCity }: CityProps) {
   const { getWeatherIcon } = OpenWeather();
+
+  console.log(fewDaysForecastCity);
 
   const days = [
     "Sunday",
@@ -32,11 +35,13 @@ function City({ city }: CityProps) {
           </span>
         </div>
         <div className="weather-container">
-        <img
+          <img
             src={getWeatherIcon(city.weather[0].icon)}
             alt={city.weather[0].main}
           />
-          <h1 className="weather-temp">{(city.main.temp - 273.15).toFixed(0)}°C</h1>
+          <h1 className="weather-temp">
+            {(city.main.temp - 273.15).toFixed(0)}°C
+          </h1>
           <h3 className="weather-desc">
             {city.weather.map((weatherItem) => weatherItem.main)}
           </h3>
@@ -59,30 +64,28 @@ function City({ city }: CityProps) {
             </div>
           </div>
         </div>
-        <div className="week-container">
-          <ul className="week-list">
-            <li className="active">
-              <i className="day-icon" data-feather="sun" />
-              <span className="day-name">Tue</span>
-              <span className="day-temp">29°C</span>
+        <ul className="week-list">
+          {fewDaysForecastCity.list.map((day) => (
+            <li key={uuidv4()} className="active">
+              <img
+                src={getWeatherIcon(day.weather[0].icon)}
+                alt={day.weather[0].main}
+              />
+              <h2 className="weather-temp">
+                {(day.main.temp - 273.15).toFixed(0)}°C
+              </h2>
+              <h2>
+                {`${new Date(day.dt * 1000).toLocaleString()}`}
+              </h2>
+              <h3 className="weather-desc">
+                {day.weather.map((weatherItem) => weatherItem.main)}
+              </h3>
+              <h3>
+              {days[new Date(day.dt * 1000).getDay()]}
+              </h3>
             </li>
-            <li>
-              <i className="day-icon" data-feather="cloud" />
-              <span className="day-name">Wed</span>
-              <span className="day-temp">21°C</span>
-            </li>
-            <li>
-              <i className="day-icon" data-feather="cloud-snow" />
-              <span className="day-name">Thu</span>
-              <span className="day-temp">08°C</span>
-            </li>
-            <li>
-              <i className="day-icon" data-feather="cloud-rain" />
-              <span className="day-name">Fry</span>
-              <span className="day-temp">19°C</span>
-            </li>
-          </ul>
-        </div>
+          ))}
+        </ul>
       </div>
     </div>
   );

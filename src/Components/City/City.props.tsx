@@ -1,5 +1,6 @@
-import { ICity } from '../../slices/citiesSlice.types';
+import { ICity, IForecast } from '../../slices/citiesSlice.types';
 
 export interface CityProps {
-  city: ICity
+  city: ICity,
+  fewDaysForecastCity: IForecast
 }

@@ -15,10 +15,16 @@ function OpenWeather() {
       ;
   }
 
+  function getWeatherSeveralDays(cityId: string) {
+    return `https://api.openweathermap.org/data/2.5/forecast?id=${cityId}&appid=${apiKey}`
+      ;
+  }
+
   return {
     getCity,
     getWeatherIcon,
-    getCityById
+    getCityById,
+    getWeatherSeveralDays
   };
 }
 

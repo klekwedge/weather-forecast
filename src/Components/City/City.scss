@@ -116,11 +116,11 @@
     float: right;
   }
 
-  .week-container {
-    margin-bottom: 120px;
-  }
 
   .week-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
     list-style-type: none;
     padding: 0;
     margin: 10px 35px;
@@ -130,7 +130,6 @@
   }
 
   .week-list > li {
-    float: left;
     padding: 15px;
     cursor: pointer;
     -webkit-transition: 200ms ease;

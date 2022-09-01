@@ -1,6 +1,6 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
-import { Heading } from "@chakra-ui/react";
+import { Box, Flex, Heading } from "@chakra-ui/react";
 import OpenWeather from "../../services/OpenWeatherApi";
 import { CityProps } from "./City.props";
 import "./City.scss";
@@ -36,10 +36,14 @@ function City({ city, fewDaysForecastCity }: CityProps) {
               alt={city.weather[0].main}
             />
             <h2 className="weather-temp">
-              {(city.main.temp - 273.15).toFixed(0)}°C
+              {(city.main.temp - 273).toFixed(0)}°C
             </h2>
             <h2>{city.weather.map((weatherItem) => weatherItem.main)}</h2>
-            <h2>Wind speed: {city.wind.speed}</h2>
+            <Box as="section" p="10px 0px">
+              <h2>Wind speed: {city.wind.speed}</h2>
+              <h2>Wind deg: {(city.wind.deg - 273).toFixed(0)}</h2>
+              <h2>Wind gust: {city.wind.gust}</h2>
+            </Box>
           </div>
         </div>
         <ul className="today-info">

@@ -51,7 +51,7 @@ const citiesSlice = createSlice({
       })
       .addCase(fetchCityForList.fulfilled, (state, action: PayloadAction<ICity>) => {
         state.citiesLoadingStatus = 'idle';
-        console.log(action.payload);
+
         if (!state.cities.find(city => city.id === action.payload.id)) {
           state.cities.push({...action.payload, updateTime: new Date().toLocaleTimeString()});
         }

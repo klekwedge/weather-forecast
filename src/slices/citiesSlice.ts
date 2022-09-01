@@ -31,7 +31,9 @@ const citiesSlice = createSlice({
   name: 'cities',
   initialState,
   reducers: {
-
+    deleteCity: (state, action) => {
+      state.cities = state.cities.filter((city) => city.id !== action.payload)
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -70,5 +72,5 @@ const citiesSlice = createSlice({
 });
 
 const { actions, reducer } = citiesSlice;
-
+export const { deleteCity } = actions
 export default reducer;

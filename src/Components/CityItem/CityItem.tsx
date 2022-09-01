@@ -1,14 +1,17 @@
 import React from "react";
-import { Box } from "@chakra-ui/react";
-import { Link } from 'react-router-dom';
+import { Flex } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import { FaExternalLinkAlt } from "react-icons/fa";
+import { AiFillDelete } from "react-icons/ai";
 import OpenWeather from "../../services/OpenWeatherApi";
+import { deleteCity } from "../../slices/citiesSlice";
 import { CityItemProps } from "./CityItem.props";
 import "./CityItem.scss";
+import { useAppDispatch } from "../../hooks/redux-hook";
 
 function CityItem({ city }: CityItemProps) {
   const { getWeatherIcon } = OpenWeather();
-
+  const dispatch = useAppDispatch();
 
   const days = [
     "Sunday",
@@ -19,6 +22,10 @@ function CityItem({ city }: CityItemProps) {
     "Friday",
     "Saturday"
   ];
+
+  function deleteItem() {
+    dispatch(deleteCity(city.id));
+  }
 
   return (
     <li className="city">
@@ -44,12 +51,19 @@ function CityItem({ city }: CityItemProps) {
             {city.weather.map((weatherItem) => weatherItem.main)}
           </h3>
         </div>
-        <Box position="absolute" top="20px" right="20px">
+        <Flex
+          position="absolute"
+          top="15px"
+          right="15px"
+          gap="5px"
+          alignItems="center"
+        >
           <Link to={`/${city.id}`}>
             {" "}
             <FaExternalLinkAlt cursor="pointer" size="18" />
           </Link>
-        </Box>
+          <AiFillDelete cursor="pointer" size="20" onClick={deleteItem} />
+        </Flex>
       </div>
     </li>
   );

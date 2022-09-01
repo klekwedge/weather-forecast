@@ -1,4 +1,5 @@
 import React, { createRef, useEffect, useState } from "react";
+import { Helmet } from 'react-helmet';
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hook";
 import OpenWeather from "../services/OpenWeatherApi";
 import { fetchCity, fetchCityForecast } from "../slices/citiesSlice";
@@ -45,12 +46,29 @@ function MyLocationPage() {
   }
 
   return (
-    <main>
-      <div ref={divRef} />
-      {locationResolution && currentCity && fewDaysForecastCity ? (
-        <City city={currentCity} fewDaysForecastCity={fewDaysForecastCity} />
-      ) : null}
-    </main>
+    <>
+      <Helmet>
+        <meta
+          name="description"
+          content={
+            currentCity
+              ? `${currentCity.name} - Weather App`
+              : "City - Weather App"
+          }
+        />
+        <title>
+          {currentCity
+            ? `${currentCity.name} - Weather App`
+            : "City - Weather App"}
+        </title>
+      </Helmet>{" "}
+      <main>
+        <div ref={divRef} />
+        {locationResolution && currentCity && fewDaysForecastCity ? (
+          <City city={currentCity} fewDaysForecastCity={fewDaysForecastCity} />
+        ) : null}
+      </main>
+    </>
   );
 }
 

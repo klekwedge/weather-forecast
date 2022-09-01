@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 import OpenWeather from "../services/OpenWeatherApi";
 import { fetchCity, fetchCityForecast } from "../slices/citiesSlice";
@@ -27,11 +28,18 @@ function CityPage() {
   if (!currentCity || !fewDaysForecastCity) {
     return null;
   }
+  console.log(currentCity);
 
   return (
-    <main>
-      <City city={currentCity} fewDaysForecastCity={fewDaysForecastCity} />
-    </main>
+    <>
+      <Helmet>
+        <meta name="description" content={currentCity ? `${currentCity.name} - Weather App` : 'City - Weather App'} />
+        <title>{currentCity ? `${currentCity.name} - Weather App` : 'City - Weather App'}</title>
+      </Helmet>
+      <main>
+        <City city={currentCity} fewDaysForecastCity={fewDaysForecastCity} />
+      </main>
+    </>
   );
 }
 

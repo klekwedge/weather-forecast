@@ -4,7 +4,7 @@ import OpenWeather from "../services/OpenWeatherApi";
 import { fetchCity, fetchCityForecast } from "../slices/citiesSlice";
 import City from "../Components/City/City";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hook";
-import Spinner from '../Components/Spinner/Spinner';
+import Spinner from "../Components/Spinner/Spinner";
 
 function CityPage() {
   const { cityId } = useParams();
@@ -21,15 +21,18 @@ function CityPage() {
   }, [cityId]);
 
   if (currentCityLoadingStatus === "loading") {
-    return <Spinner/>;
+    return <Spinner />;
   }
-
 
   if (!currentCity || !fewDaysForecastCity) {
     return null;
   }
 
-  return <City city={currentCity} fewDaysForecastCity={fewDaysForecastCity} />;
+  return (
+    <main>
+      <City city={currentCity} fewDaysForecastCity={fewDaysForecastCity} />
+    </main>
+  );
 }
 
 export default CityPage;

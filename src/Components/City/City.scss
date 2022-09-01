@@ -31,14 +31,14 @@
     gap: 20px;
   }
 
-  .today-info > div {
+  .today-info > li {
     display: flex;
     align-items: center;
     flex-direction: column;
     gap: 5px;
   }
 
-  .today-info > div .title {
+  .today-info > li h2 {
     font-weight: 700;
   }
 

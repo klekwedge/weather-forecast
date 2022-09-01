@@ -29,44 +29,41 @@ function CityItem({ city }: CityItemProps) {
 
   return (
     <li className="city__item">
-      <div className="weather-side">
-        <div className="weather-gradient" />
-        <div className="date-container">
-          <h2 className="date-dayname">{days[new Date().getDay()]}</h2>
-          <span className="date-day">{new Date().toLocaleDateString()}</span>
-          <span className="location">
-            {city.name}, {city.sys.country}
-          </span>
-        </div>
-        <div className="weather-container">
-          <img
-            src={getWeatherIcon(city.weather[0].icon)}
-            alt={city.weather[0].main}
-          />
-          <h1 className="weather-temp">
-            {(city.main.temp - 273.15).toFixed(0)}°C
-          </h1>
-          <h3>
-            {city.weather.map((weatherItem) => weatherItem.main)}
-          </h3>
-          <h3 className="weather-desc">Wind speed: {city.wind.speed}</h3>
-          <h3 className="update">Last server update: {`${new Date(city.dt * 1000).toLocaleTimeString()}`}</h3>
-          <h3 className="update">Latest query update: {`${city.updateTime}`}</h3>
-        </div>
-        <Flex
-          position="absolute"
-          top="15px"
-          right="15px"
-          gap="5px"
-          alignItems="center"
-        >
-          <Link to={`/${city.id}`}>
-            {" "}
-            <FaExternalLinkAlt cursor="pointer" size="18" />
-          </Link>
-          <AiFillDelete cursor="pointer" size="20" onClick={deleteItem} />
-        </Flex>
+      <div>
+        <h4>{days[new Date().getDay()]}</h4>
+        <h4>{new Date().toLocaleDateString()}</h4>
+        <h3 className="location">
+          {city.name}, {city.sys.country}
+        </h3>
       </div>
+      <div>
+        <img
+          src={getWeatherIcon(city.weather[0].icon)}
+          alt={city.weather[0].main}
+        />
+        <h4 className="weather-temp">
+          {(city.main.temp - 273.15).toFixed(0)}°C
+        </h4>
+        <h4>{city.weather.map((weatherItem) => weatherItem.main)}</h4>
+        <h4 className="weather-desc">Wind speed: {city.wind.speed}</h4>
+        <h4 className="update">
+          Last server update:{" "}
+          {`${new Date(city.dt * 1000).toLocaleTimeString()}`}
+        </h4>
+        <h3 className="update">Latest query update: {`${city.updateTime}`}</h3>
+      </div>
+      <Flex
+        position="absolute"
+        top="15px"
+        right="15px"
+        gap="5px"
+        alignItems="center"
+      >
+        <Link to={`/${city.id}`}>
+          <FaExternalLinkAlt cursor="pointer" size="18" />
+        </Link>
+        <AiFillDelete cursor="pointer" size="20" onClick={deleteItem} />
+      </Flex>
     </li>
   );
 }

@@ -14,12 +14,9 @@ import {
   addLocalCities,
   fetchCityForList,
   updateCityForList
-  // updateCityForList,
-  // updateCities
 } from "../slices/citiesSlice";
 import CityItem from "../Components/CityItem/CityItem";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hook";
-import { ICity } from "../slices/citiesSlice.types";
 
 function CityListPage() {
   const updateInterval =  50 * 1000;
@@ -65,7 +62,7 @@ function CityListPage() {
   }
 
   return (
-    <div>
+    <main>
       <FormControl>
         <FormLabel>Add city</FormLabel>
         <Box display="flex" gap="20px">
@@ -90,7 +87,7 @@ function CityListPage() {
           ? cities.map((city) => <CityItem key={city.id} city={city} />)
           : null}
       </List>
-    </div>
+    </main>
   );
 }
 

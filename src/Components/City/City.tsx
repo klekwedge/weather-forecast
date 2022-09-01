@@ -35,29 +35,27 @@ function City({ city, fewDaysForecastCity }: CityProps) {
               src={getWeatherIcon(city.weather[0].icon)}
               alt={city.weather[0].main}
             />
-            <h1 className="weather-temp">
+            <h2 className="weather-temp">
               {(city.main.temp - 273.15).toFixed(0)}°C
-            </h1>
-            <h3 className="weather-desc">
-              {city.weather.map((weatherItem) => weatherItem.main)}
-            </h3>
-            <h3>Wind speed: {city.wind.speed}</h3>
+            </h2>
+            <h2>{city.weather.map((weatherItem) => weatherItem.main)}</h2>
+            <h2>Wind speed: {city.wind.speed}</h2>
           </div>
         </div>
-        <div className="today-info">
-          <div>
-            <span className="title">Sunrise</span>
-            <span>
-              {new Date(city.sys.sunrise * 1000).toLocaleTimeString()}
-            </span>
-          </div>
-          <div>
-            <span className="title">Sunset</span>
-            <span>{new Date(city.sys.sunset * 1000).toLocaleTimeString()}</span>
-          </div>
-        </div>
+        <ul className="today-info">
+          <li>
+            <h2>Sunrise</h2>
+            <h2>{new Date(city.sys.sunrise * 1000).toLocaleTimeString()}</h2>
+          </li>
+          <li>
+            <h2>Sunset</h2>
+            <h2>{new Date(city.sys.sunset * 1000).toLocaleTimeString()}</h2>
+          </li>
+        </ul>
       </div>
-      <Heading p='0px 30px' fontSize='24px' fontWeight='500'>Weather forecast for 5 days every 3 hours:</Heading>
+      <Heading p="0px 30px" fontSize="24px" fontWeight="500">
+        Weather forecast for 5 days every 3 hours:
+      </Heading>
       <ul className="week-list">
         {fewDaysForecastCity.list.map((day) => (
           <li key={uuidv4()}>

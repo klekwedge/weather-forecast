@@ -1,5 +1,3 @@
-
-
 .city__item {
   border-radius: 25px;
   box-shadow: 0 0 70px -10px rgba(0, 0, 0, 0.2);
@@ -10,46 +8,24 @@
   padding: 10px 20px;
   background: #2B6CB0;
   position: relative;
-}
-
-.city__item:hover {
-  transform: scale(1.03);
-}
-
-.weather-side {
   height: 100%;
   border-radius: 25px;
   width: 100%;
   transition: transform 300ms ease;
 }
 
-.date-day {
-  display: block;
+.city__item:hover {
+  transform: scale(1.03);
 }
 
 .location {
-  display: inline-block;
   margin-top: 10px;
-}
-
-.location-icon {
-  display: inline-block;
-  height: 0.8em;
-  width: auto;
-  margin-right: 5px;
-}
-
-
-
-.weather-icon.feather {
-  height: 60px;
-  width: auto;
 }
 
 .weather-temp {
   margin: 0;
   font-weight: 700;
-  font-size: 4em;
+  font-size: 55px;
 }
 
 .weather-desc {

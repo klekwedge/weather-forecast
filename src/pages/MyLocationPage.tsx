@@ -45,12 +45,12 @@ function MyLocationPage() {
   }
 
   return (
-    <div>
+    <main>
       <div ref={divRef} />
       {locationResolution && currentCity && fewDaysForecastCity ? (
         <City city={currentCity} fewDaysForecastCity={fewDaysForecastCity} />
       ) : null}
-    </div>
+    </main>
   );
 }
 

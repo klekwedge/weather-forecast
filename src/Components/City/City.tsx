@@ -1,13 +1,12 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
+import { Heading } from "@chakra-ui/react";
 import OpenWeather from "../../services/OpenWeatherApi";
 import { CityProps } from "./City.props";
 import "./City.scss";
 
 function City({ city, fewDaysForecastCity }: CityProps) {
   const { getWeatherIcon } = OpenWeather();
-
-  console.log(city);
 
   const days = [
     "Sunday",
@@ -18,7 +17,6 @@ function City({ city, fewDaysForecastCity }: CityProps) {
     "Friday",
     "Saturday"
   ];
-
 
   return (
     <div className="city">
@@ -59,25 +57,26 @@ function City({ city, fewDaysForecastCity }: CityProps) {
           </div>
         </div>
       </div>
-        <ul className="week-list">
-          {fewDaysForecastCity.list.map((day) => (
-            <li key={uuidv4()}>
-              <img
-                src={getWeatherIcon(day.weather[0].icon)}
-                alt={day.weather[0].main}
-              />
-              <h2 className="weather-temp">
-                {(day.main.temp - 273.15).toFixed(0)}°C
-              </h2>
-              <h3 className="weather-desc">
-                {day.weather.map((weatherItem) => weatherItem.main)}
-              </h3>
-              <h3>Wind speed: {day.wind.speed}</h3>
-              <h2>{`${new Date(day.dt * 1000).toLocaleString()}`}</h2>
-              <h3>{days[new Date(day.dt * 1000).getDay()]}</h3>
-            </li>
-          ))}
-        </ul>
+      <Heading p='0px 30px' fontSize='24px' fontWeight='500'>Weather forecast for 5 days every 3 hours:</Heading>
+      <ul className="week-list">
+        {fewDaysForecastCity.list.map((day) => (
+          <li key={uuidv4()}>
+            <img
+              src={getWeatherIcon(day.weather[0].icon)}
+              alt={day.weather[0].main}
+            />
+            <h2 className="weather-temp">
+              {(day.main.temp - 273.15).toFixed(0)}°C
+            </h2>
+            <h3 className="weather-desc">
+              {day.weather.map((weatherItem) => weatherItem.main)}
+            </h3>
+            <h3>Wind speed: {day.wind.speed}</h3>
+            <h2>{`${new Date(day.dt * 1000).toLocaleString()}`}</h2>
+            <h3>{days[new Date(day.dt * 1000).getDay()]}</h3>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

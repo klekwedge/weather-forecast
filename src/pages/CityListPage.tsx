@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import {
   Button,
   Input,
@@ -56,7 +57,7 @@ function CityListPage() {
         </Box>
       </FormControl>
       <Button type="button" colorScheme="teal">
-        My location
+        <Link to="/my-location"> My location</Link>
       </Button>
       <List display="flex" gap="40px 20px" pt="50px" flexWrap="wrap">
         {cities.length > 0

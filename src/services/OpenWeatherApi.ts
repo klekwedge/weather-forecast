@@ -15,8 +15,18 @@ function OpenWeather() {
       ;
   }
 
+  function getCityByCoord(lat: number, lon: number) {
+    return `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
+      ;
+  }
+
   function getWeatherSeveralDays(cityId: string) {
     return `https://api.openweathermap.org/data/2.5/forecast?id=${cityId}&appid=${apiKey}`
+      ;
+  }
+
+  function getWeatherSeveralDaysByCoord(lat: number, lon: number) {
+    return `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`
       ;
   }
 
@@ -24,7 +34,9 @@ function OpenWeather() {
     getCity,
     getWeatherIcon,
     getCityById,
-    getWeatherSeveralDays
+    getWeatherSeveralDays,
+    getCityByCoord,
+    getWeatherSeveralDaysByCoord
   };
 }
 

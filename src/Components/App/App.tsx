@@ -6,7 +6,7 @@ import Spinner from '../Spinner/Spinner';
 const CityListPage = lazy(() => import("../../pages/CityListPage"));
 const CityPage = lazy(() => import("../../pages/CityPage"));
 const MyLocationPage = lazy(() => import("../../pages/MyLocationPage"));
-const Page404 = lazy(() => import("../../pages/Page404"));
+const Page404 = lazy(() => import("../../pages/Page404/Page404"));
 
 function App() {
   return (

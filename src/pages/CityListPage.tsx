@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Button,
   Input,
@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 
 import OpenWeather from "../services/OpenWeatherApi";
-import { fetchCity } from "../slices/citiesSlice";
+import { addLocalCities, fetchCity } from "../slices/citiesSlice";
 import CityItem from "../Components/CityItem/CityItem";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hook";
 
@@ -19,6 +19,18 @@ function CityListPage() {
   const [inputValue, setInputValue] = useState("");
 
   const dispatch = useAppDispatch();
+
+  const savedCities = localStorage.getItem("savedCities");
+
+  useEffect(() => {
+    if (savedCities) {
+      dispatch(addLocalCities(JSON.parse(savedCities)));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("savedCities", JSON.stringify(cities));
+  }, [cities]);
 
   function addCityToList() {
     dispatch(fetchCity(getCity(inputValue)));

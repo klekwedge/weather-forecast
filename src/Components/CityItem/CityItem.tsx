@@ -30,7 +30,7 @@ function CityItem({ city }: CityItemProps) {
 
   return (
     <motion.li
-      className="city__item"
+      className="city-item"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -39,7 +39,7 @@ function CityItem({ city }: CityItemProps) {
       <div>
         <h4>{days[new Date().getDay()]}</h4>
         <h4>{new Date().toLocaleDateString()}</h4>
-        <h3 className="location">
+        <h3 className="city-item__location">
           {city.name}, {city.sys.country}
         </h3>
       </div>
@@ -48,16 +48,16 @@ function CityItem({ city }: CityItemProps) {
           src={getWeatherIcon(city.weather[0].icon)}
           alt={city.weather[0].main}
         />
-        <h4 className="weather-temp">
+        <h4 className="city-item__weather-temp">
           {(city.main.temp - 273.15).toFixed(0)}°C
         </h4>
-        <h4>{city.weather.map((weatherItem) => weatherItem.main)}</h4>
-        <h4 className="weather-desc">Wind speed: {city.wind.speed}</h4>
-        <h4 className="update">
+        <h4  className="city-item__weather">{city.weather.map((weatherItem) => weatherItem.main)}</h4>
+        <h4 className="city-item__weather-desc">Wind speed: {city.wind.speed}</h4>
+        <h4 className="city-item__update">
           Last server update:{" "}
           {`${new Date(city.dt * 1000).toLocaleTimeString()}`}
         </h4>
-        <h3 className="update">Latest query update: {`${city.updateTime}`}</h3>
+        <h3 className="city-item__update">Latest query update: {`${city.updateTime}`}</h3>
       </div>
       <Flex
         position="absolute"

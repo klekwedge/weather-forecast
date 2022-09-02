@@ -9,7 +9,7 @@ const MyLocationPage = lazy(() => import("../../pages/MyLocationPage"));
 const Page404 = lazy(() => import("../../pages/Page404/Page404"));
 
 function App() {
-  return (
+  return ( 
     <Router>
       <Box maxW='1200px' margin='0 auto' className="flex flex-col items-center">
         <Suspense fallback={<Spinner/>}>

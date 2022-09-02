@@ -1,5 +1,5 @@
 export default function useHttp() {
-  const request = async (url) => {
+  const request = async (url: string) => {
     try {
       const response = await fetch(url);
 

@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Box } from "@chakra-ui/react";
+import { Box, Heading } from "@chakra-ui/react";
 import "./Page404.scss";
 
 function Page404() {
   return (
-    <Box as="main" p="20px">
-      <div className="landing-page">
-        <div style={{ textAlign: "center" }} className="icon__download">
+    <Box as="main" p="20px" className='page404'>
+        <div className="page404__icon">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             id="b599d709-684a-4b18-9cac-f9c979cf5115"
@@ -188,12 +187,11 @@ function Page404() {
           </svg>
         </div>
 
-        <h1> 404 Error</h1>
-        <p> We can not find the page you are looking for.</p>
+        <h1 className='page404__title'> 404 Error</h1>
+        <p className='page404__paragraph'> We can not find the page you are looking for.</p>
         <Link to="/" type="button" className="page404__link">
           Back to home
         </Link>
-      </div>
     </Box>
   );
 }

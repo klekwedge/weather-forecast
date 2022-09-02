@@ -11,7 +11,7 @@ const Page404 = lazy(() => import("../../pages/Page404/Page404"));
 function App() {
   return (
     <Router>
-      <Box maxW='1200px' margin='0 auto' p="10px 20px" className="flex flex-col items-center">
+      <Box maxW='1200px' margin='0 auto' className="flex flex-col items-center">
         <Suspense fallback={<Spinner/>}>
           <Routes>
             <Route path="/" element={<CityListPage />} />

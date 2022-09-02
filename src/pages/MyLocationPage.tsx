@@ -1,5 +1,6 @@
 import React, { createRef, useEffect, useState } from "react";
-import { Helmet } from 'react-helmet';
+import { Box } from "@chakra-ui/react";
+import { Helmet } from "react-helmet";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hook";
 import OpenWeather from "../services/OpenWeatherApi";
 import { fetchCity, fetchCityForecast } from "../slices/citiesSlice";
@@ -62,12 +63,12 @@ function MyLocationPage() {
             : "City - Weather App"}
         </title>
       </Helmet>{" "}
-      <main>
+      <Box as="main" p="20px 0px">
         <div ref={divRef} />
         {locationResolution && currentCity && fewDaysForecastCity ? (
           <City city={currentCity} fewDaysForecastCity={fewDaysForecastCity} />
         ) : null}
-      </main>
+      </Box>
     </>
   );
 }

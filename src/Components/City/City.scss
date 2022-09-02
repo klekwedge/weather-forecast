@@ -8,9 +8,11 @@
   flex-direction: column;
   gap: 30px;
 
-  &__weather {
+  &__today-forecast{
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px 100px;
     height: 100%;
     min-height: 350px;
     padding: 20px 30px;
@@ -18,31 +20,27 @@
     border-radius: 20px 20px 0px 0px;
   }
 
-  .weather-temp {
-    font-weight: 700;
-    font-size: 50px;
-  }
-
-
-  .today-info {
-    padding: 15px;
-    margin: 0 25px 25px 25px;
+  &__today-info {
     display: flex;
     gap: 20px;
+
+    & li {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 5px;
+
+      @media (max-width: 460px) {
+        align-items: flex-start;
+      }
+
+      & h2 {
+        font-weight: 700;
+      }
+    }
   }
 
-  .today-info > li {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 5px;
-  }
-
-  .today-info > li h2 {
-    font-weight: 700;
-  }
-
-  .week-list {
+  &__week-forecast {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -53,7 +51,7 @@
     border-radius: 10px;
   }
 
-  .week-list > li {
+  &__week-forecast > li {
     padding: 15px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -61,9 +59,24 @@
     color: #222831;
     border-radius: 10px;
     flex: 0 1 18%;
+    min-width: 200px;
+
+    @media (max-width: 490px) {
+      flex: 1 1 100%;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
-  .week-list > li:hover {
-    transform: scale(1.05);
+  .week-forecast__temp{
+    font-weight: 700;
+    font-size: 50px;
+  }
+
+  .week-forecast__desc{
+    font-weight: 500;
+    font-size: 24px;
   }
 }

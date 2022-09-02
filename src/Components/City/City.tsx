@@ -27,13 +27,13 @@ function City({ city, fewDaysForecastCity }: CityProps) {
         exit={{ opacity: 0 }}
         transition={{ duration: "0.5" }}
       >
-        <div className="city__weather">
+        <div className="city__today-forecast">
           <div>
             <div>
-              <h1 className="location">
+              <h1>
                 {city.name}, {city.sys.country}
               </h1>
-              <h2 className="date-dayname">
+              <h2>
                 {new Date().toLocaleDateString()} {days[new Date().getDay()]}
               </h2>
             </div>
@@ -42,7 +42,7 @@ function City({ city, fewDaysForecastCity }: CityProps) {
                 src={getWeatherIcon(city.weather[0].icon)}
                 alt={city.weather[0].main}
               />
-              <h2 className="weather-temp">
+              <h2 className="city__weather-temp">
                 {(city.main.temp - 273).toFixed(0)}°C
               </h2>
               <h2>{city.weather.map((weatherItem) => weatherItem.main)}</h2>
@@ -53,7 +53,7 @@ function City({ city, fewDaysForecastCity }: CityProps) {
               </Box>
             </div>
           </div>
-          <ul className="today-info">
+          <ul className="city__today-info">
             <li>
               <h2>Sunrise</h2>
               <h2>{new Date(city.sys.sunrise * 1000).toLocaleTimeString()}</h2>
@@ -67,17 +67,17 @@ function City({ city, fewDaysForecastCity }: CityProps) {
         <Heading p="0px 30px" fontSize="24px" fontWeight="500">
           Weather forecast for 5 days every 3 hours:
         </Heading>
-        <ul className="week-list">
+        <ul className="city__week-forecast week-forecast">
           {fewDaysForecastCity.list.map((day) => (
             <li key={uuidv4()}>
               <img
                 src={getWeatherIcon(day.weather[0].icon)}
                 alt={day.weather[0].main}
               />
-              <h2 className="weather-temp">
+              <h2 className="week-forecast__temp">
                 {(day.main.temp - 273.15).toFixed(0)}°C
               </h2>
-              <h3 className="weather-desc">
+              <h3 className="week-forecast__desc">
                 {day.weather.map((weatherItem) => weatherItem.main)}
               </h3>
               <h3>Wind speed: {day.wind.speed}</h3>

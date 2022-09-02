@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
+import { Box } from "@chakra-ui/react";
 import OpenWeather from "../services/OpenWeatherApi";
 import { fetchCity, fetchCityForecast } from "../slices/citiesSlice";
 import City from "../Components/City/City";
@@ -54,9 +55,9 @@ function CityPage() {
             : "City - Weather App"}
         </title>
       </Helmet>
-      <main>
+      <Box as="main" p="20px 0px">
         <City city={currentCity} fewDaysForecastCity={fewDaysForecastCity} />
-      </main>
+      </Box>
     </>
   );
 }

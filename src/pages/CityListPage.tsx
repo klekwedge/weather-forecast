@@ -10,7 +10,6 @@ import {
   FormLabel,
   Box
 } from "@chakra-ui/react";
-
 import OpenWeather from "../services/OpenWeatherApi";
 import {
   addLocalCities,
@@ -56,11 +55,19 @@ function CityListPage() {
   }, [cities]);
 
   function addCityToList() {
-    dispatch(fetchCityForList(getCity(inputValue)));
-    if (cities.length > 0) {
-      cities.map((city) => dispatch(updateCityForList(getCityById(city.id))));
+    if (inputValue) {
+      dispatch(fetchCityForList(getCity(inputValue)));
+      if (cities.length > 0) {
+        cities.map((city) => dispatch(updateCityForList(getCityById(city.id))));
+      }
+      setInputValue("");
     }
-    setInputValue("");
+  }
+
+  function addCityToListByKey(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.code === "Enter") {
+      addCityToList();
+    }
   }
 
   return (
@@ -69,34 +76,41 @@ function CityListPage() {
         <meta name="description" content="City List - Weather App" />
         <title>City List - Weather App</title>
       </Helmet>
-      <main>
-        <AnimatePresence>
-          <FormControl>
-            <FormLabel>Add city</FormLabel>
-            <Box display="flex" gap="20px">
-              <Input
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                placeholder="Enter the name of the city"
-                _placeholder={{ color: "gray" }}
-                color="white"
-                mb="15px"
-              />
-              <Button type="button" colorScheme="blue" onClick={addCityToList}>
-                Add city
-              </Button>
-            </Box>
-          </FormControl>
-          <Button type="button" colorScheme="teal">
-            <Link to="/my-location"> My location</Link>
-          </Button>
-          <List display="flex" gap="40px 20px" pt="50px" flexWrap="wrap">
+      <Box as='main' p="20px">
+        <FormControl>
+          <FormLabel>Add city</FormLabel>
+          <Box display="flex" gap="20px">
+            <Input
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              onKeyDown={(e) => addCityToListByKey(e)}
+              placeholder="Enter the name of the city"
+              _placeholder={{ color: "gray" }}
+              color="white"
+              mb="15px"
+            />
+            <Button type="button" colorScheme="blue" onClick={addCityToList}>
+              Add city
+            </Button>
+          </Box>
+        </FormControl>
+        <Button type="button" colorScheme="teal">
+          <Link to="/my-location"> My location</Link>
+        </Button>
+        <List
+          display="flex"
+          gap="40px 20px"
+          pt="50px"
+          flexWrap="wrap"
+          justifyContent={["center", "center", "center", "flex-start"]}
+        >
+          <AnimatePresence>
             {cities.length > 0
               ? cities.map((city) => <CityItem key={city.id} city={city} />)
-              : null}
-          </List>
-        </AnimatePresence>
-      </main>
+              : null}{" "}
+          </AnimatePresence>
+        </List>
+      </Box>
     </>
   );
 }

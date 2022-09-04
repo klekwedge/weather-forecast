@@ -18,9 +18,10 @@ import {
 } from "../slices/citiesSlice";
 import CityItem from "../Components/CityItem/CityItem";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hook";
+import projectConfig from '../configs/project.config';
 
 function CityListPage() {
-  const updateInterval = 60 * 1000;
+  const updateInterval = projectConfig.updateInterval * 1000 || 60 * 1000;
   const { cities } = useAppSelector((state) => state.cities);
   const [updates, setUpdates] = useState(0);
   const [initialUpdate, setInitialUpdates] = useState(false);

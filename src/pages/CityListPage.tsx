@@ -20,9 +20,10 @@ import CityItem from "../Components/CityItem/CityItem";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hook";
 
 function CityListPage() {
-  const updateInterval = 50 * 1000;
+  const updateInterval = 60 * 1000;
   const { cities } = useAppSelector((state) => state.cities);
   const [updates, setUpdates] = useState(0);
+  const [initialUpdate, setInitialUpdates] = useState(false);
   const { getCity, getCityById } = OpenWeather();
   const [inputValue, setInputValue] = useState("");
 
@@ -33,8 +34,15 @@ function CityListPage() {
   useEffect(() => {
     if (savedCities) {
       dispatch(addLocalCities(JSON.parse(savedCities)));
+      setInitialUpdates(true);
     }
   }, []);
+
+  useEffect(() => {
+    if (cities.length > 0) {
+      cities.map((city) => dispatch(updateCityForList(getCityById(city.id))));
+    }
+  }, [initialUpdate]);
 
   useEffect(() => {
     const interval = setInterval(() => {

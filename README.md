@@ -1,39 +1,41 @@
-# SPA: WeatherApp (работа с внешним API-сервисом)
+# SPA: WeatherApp (working with an external API service)
 
-## 1 страница: CityList
-- Показывать список названий городов (хранить в LocalStorage)
-- Показывать рядом с каждым городом текущую погоду: температура, скорость ветра, иконка погоды (если есть)
-Обновлять данные сразу после изменения элемента списка и с определенной частотой (частоту задать в конфиге)
-- Возможность добавлять/удалять города
+You can also read this README in [русский](https://github.com/klekwedge/weather-forecast/blob/main/README.RU.md)
 
-## 2 страница: City
-- Переход со страницы CityList выбором города
-- Показ погоды по указанному городу на период (напр, неделя): температура, скорость ветра, иконка погоды (если есть)
+## 1 page: CityList
+- Show list of city names (stored in LocalStorage)
+- Show current weather next to each city: temperature, wind speed, weather icon (if any)
+Update data immediately after changing the list item and with a certain frequency (set the frequency in the config)
+- Ability to add/remove cities
 
-## 3 страница: MyLocation
-- Переход со страницы CityList по кнопке MyLocation 
-- Автоматически определить текущее местоположение и показать прогноз погоды на период (как в п2)
+## 2nd page: City
+- Switching from the CityList page by choosing a city
+- Display weather for the specified city for a period (e.g. a week): temperature, wind speed, weather icon (if any)
 
-Данные: openweathermap.org или любой другой сервис  
-Обязательные технологии: react.js и redux/mobx  
-Результат: репозиторий на github с работающей инструкцией по развертыванию  
+## 3rd page: MyLocation
+- Switching from the CityList page using the MyLocation button
+- Automatically determine the current location and show the weather forecast for the period (as in p2)
 
-## Инструкция по развертыванию
+Data: openweathermap.org or any other service
+Required technologies: react.js and redux/mobx
+Result: github repository with working deployment instructions
 
-1. Сделать клон данного репозитория ```git clone https://github.com/klekwedge/weather-forecast.git```
-2. Установить все необходимые npm пакеты с помощью команды ```npm i```
-3. Запустить проект с помощью команды ```npm start```
+## Deployment instructions
 
-## Конфиг проекта
+1. Make a clone of this repository ```git clone https://github.com/klekwedge/weather-forecast.git```
+2. Install all required npm packages with ```npm i```
+3. Run the project with the command ```npm start```
 
-Обновление данных с определенной частотой задано в папке по пути 
+## Project config
+
+Refreshing data with a certain frequency is set in the folder along the path
 **./src/configs/project.config.ts**
-***Частоту задавать в минутах***
+***Frequency set in minutes***
 
-## Используемый стек 
+## Stack used
 
 - React
-- Redux
-- TypeScript
-- Scss
+- redux
+- typescript
+- scss
 - Chakra UI

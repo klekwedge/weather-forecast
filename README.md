@@ -30,6 +30,7 @@ Result: github repository with working deployment instructions
 
 Refreshing data with a certain frequency is set in the folder along the path
 **./src/configs/project.config.ts**
+
 ***Frequency set in minutes***
 
 ## Stack used

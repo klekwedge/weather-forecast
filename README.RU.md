@@ -37,5 +37,5 @@
 - React
 - Redux
 - TypeScript
-- Scss
+- SCSS
 - Chakra UI

@@ -35,7 +35,7 @@ Refreshing data with a certain frequency is set in the folder along the path
 ## Stack used
 
 - React
-- redux
-- typescript
-- scss
+- Redux
+- TypeScript
+- SCSS
 - Chakra UI

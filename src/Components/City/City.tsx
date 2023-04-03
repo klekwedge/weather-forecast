@@ -1,4 +1,3 @@
-import React from "react";
 import { v4 as uuidv4 } from "uuid";
 import { motion } from "framer-motion";
 import { Box, Heading } from "@chakra-ui/react";

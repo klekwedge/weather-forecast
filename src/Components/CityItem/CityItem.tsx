@@ -1,4 +1,3 @@
-import React from "react";
 import { Flex } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -69,7 +68,7 @@ function CityItem({ city }: CityItemProps) {
         <Link to={`/${city.id}`}>
           <FaExternalLinkAlt cursor="pointer" size="18" />
         </Link>
-        <AiFillDelete cursor="pointer" size="20" onClick={deleteItem} />
+        <AiFillDelete cursor="pointer" size="20" onClick={() => deleteItem()} />
       </Flex>
     </motion.li>
   );

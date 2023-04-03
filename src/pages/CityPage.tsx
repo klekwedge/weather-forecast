@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 import { Box } from "@chakra-ui/react";
 import OpenWeather from "../services/OpenWeatherApi";
 import { fetchCity, fetchCityForecast } from "../slices/citiesSlice";
-import City from "../Components/City/City";
-import ErrorMessage from "../Components/ErrorMessage/ErrorMessage";
+import City from "../components/City/City";
+import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hook";
-import Spinner from "../Components/Spinner/Spinner";
+import Spinner from "../components/Spinner/Spinner";
 
 function CityPage() {
   const { cityId } = useParams();

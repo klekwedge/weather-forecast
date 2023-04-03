@@ -1,39 +1,27 @@
 {
-  "env": {
-    "browser": true,
-    "es2021": true
-  },
   "extends": [
-    // "plugin:react/recommended",
+    "plugin:react/recommended",
     "airbnb",
     "airbnb-typescript",
     "plugin:@typescript-eslint/recommended",
     // "plugin:prettier/recommended",
     "prettier"
   ],
-  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "./tsconfig.json",
+    "ecmaVersion": 2018,
+    "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
-    },
-    "ecmaVersion": "latest",
-    "sourceType": "module"
+    }
   },
-  "plugins": ["react", "@typescript-eslint"],
   "rules": {
-    "react/jsx-filename-extension": [
-      2,
-      { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
-    ],
     "linebreak-style": 0,
     "no-unused-react-component-methods": 0,
     "react/prop-types": "warn",
-    "react/jsx-no-bind": "warn"
-  },
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
+    "no-unused-vars": "warn",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "react/react-in-jsx-scope": "off",
+    "jsx-a11y/click-events-have-key-events": "off"
   }
 }

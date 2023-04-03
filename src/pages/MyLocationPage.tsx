@@ -1,11 +1,11 @@
-import React, { createRef, useEffect, useState } from "react";
+import { createRef, useEffect, useState } from "react";
 import { Box } from "@chakra-ui/react";
 import { Helmet } from "react-helmet";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hook";
 import OpenWeather from "../services/OpenWeatherApi";
 import { fetchCity, fetchCityForecast } from "../slices/citiesSlice";
-import City from "../Components/City/City";
-import Spinner from "../Components/Spinner/Spinner";
+import City from "../components/City/City";
+import Spinner from "../components/Spinner/Spinner";
 
 function MyLocationPage() {
   const divRef = createRef<HTMLDivElement>();

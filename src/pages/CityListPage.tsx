@@ -16,7 +16,7 @@ import {
   fetchCityForList,
   updateCityForList
 } from "../slices/citiesSlice";
-import CityItem from "../Components/CityItem/CityItem";
+import CityItem from "../components/CityItem/CityItem";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hook";
 import projectConfig from '../configs/project.config';
 
@@ -98,7 +98,7 @@ function CityListPage() {
               color="white"
               mb="15px"
             />
-            <Button type="button" colorScheme="blue" onClick={addCityToList}>
+            <Button type="button" colorScheme="blue" onClick={() => addCityToList()}>
               Add city
             </Button>
           </Box>

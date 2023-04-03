@@ -1,4 +1,3 @@
-import React from "react";
 import { ErrorMessageProps } from "./ErrorMessage.props";
 import "./ErrorMessage.scss";
 

@@ -1,5 +1,6 @@
 {
-  "name": "weather-forecast",
+  "name": "my-vue-app",
+  "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -23,7 +24,6 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "@types/node": "^18.15.11",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@types/react-helmet": "^6.1.6",

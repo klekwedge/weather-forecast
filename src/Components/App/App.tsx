@@ -1,7 +1,7 @@
 import { lazy, Suspense } from "react";
 import { Box } from "@chakra-ui/react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Spinner from '../Spinner/Spinner';
+import Spinner from "../Spinner/Spinner";
 
 const CityListPage = lazy(() => import("../../pages/CityListPage"));
 const CityPage = lazy(() => import("../../pages/CityPage"));

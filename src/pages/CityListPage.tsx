@@ -17,7 +17,7 @@ import {
   updateCityForList
 } from "../slices/citiesSlice";
 import CityItem from "../components/CityItem/CityItem";
-import { useAppDispatch, useAppSelector } from "../hooks/redux-hook";
+import { useAppDispatch, useAppSelector } from "../hooks/useRedux";
 import projectConfig from '../configs/project.config';
 
 function CityListPage() {

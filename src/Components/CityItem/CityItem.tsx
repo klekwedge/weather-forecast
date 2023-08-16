@@ -5,9 +5,14 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
 import OpenWeather from "../../services/OpenWeatherApi";
 import { deleteCity } from "../../slices/citiesSlice";
-import { CityItemProps } from "./CityItem.props";
 import "./CityItem.scss";
-import { useAppDispatch } from "../../hooks/redux-hook";
+import { useAppDispatch } from "../../hooks/useRedux";
+import { ICity } from "../../types";
+
+
+interface CityItemProps {
+  city: ICity
+}
 
 function CityItem({ city }: CityItemProps) {
   const { getWeatherIcon } = OpenWeather();

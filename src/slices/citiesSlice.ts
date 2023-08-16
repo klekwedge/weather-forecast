@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import useHttp from '../hooks/request-hook';
+import useHttp from '../hooks/useFetch';
 import { CitiesState, ICity } from './citiesSlice.types';
 
 const initialState: CitiesState = {

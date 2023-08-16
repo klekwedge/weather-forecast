@@ -1,5 +1,8 @@
-import { ErrorMessageProps } from "./ErrorMessage.props";
 import "./ErrorMessage.scss";
+
+interface ErrorMessageProps  {
+  errorTitle: string
+}
 
 function ErrorMessage({ errorTitle }: ErrorMessageProps) {
   return (

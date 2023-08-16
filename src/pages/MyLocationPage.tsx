@@ -1,7 +1,7 @@
 import { createRef, useEffect, useState } from "react";
 import { Box } from "@chakra-ui/react";
 import { Helmet } from "react-helmet";
-import { useAppDispatch, useAppSelector } from "../hooks/redux-hook";
+import { useAppDispatch, useAppSelector } from "../hooks/useRedux";
 import OpenWeather from "../services/OpenWeatherApi";
 import { fetchCity, fetchCityForecast } from "../slices/citiesSlice";
 import City from "../components/City/City";

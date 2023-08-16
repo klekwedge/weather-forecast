@@ -1,4 +1,4 @@
-export default function useHttp() {
+export default function useFetch() {
   const request = async (url: string) => {
     try {
       const response = await fetch(url);

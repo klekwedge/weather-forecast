@@ -2,8 +2,13 @@ import { v4 as uuidv4 } from "uuid";
 import { motion } from "framer-motion";
 import { Box, Heading } from "@chakra-ui/react";
 import OpenWeather from "../../services/OpenWeatherApi";
-import { CityProps } from "./City.props";
 import "./City.scss";
+import { ICity, IForecast } from "../../types";
+
+interface CityProps {
+  city: ICity,
+  fewDaysForecastCity: IForecast
+}
 
 function City({ city, fewDaysForecastCity }: CityProps) {
   const { getWeatherIcon } = OpenWeather();

@@ -6,7 +6,7 @@ import OpenWeather from "../services/OpenWeatherApi";
 import { fetchCity, fetchCityForecast } from "../slices/citiesSlice";
 import City from "../components/City/City";
 import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
-import { useAppDispatch, useAppSelector } from "../hooks/redux-hook";
+import { useAppDispatch, useAppSelector } from "../hooks/useRedux";
 import Spinner from "../components/Spinner/Spinner";
 
 function CityPage() {

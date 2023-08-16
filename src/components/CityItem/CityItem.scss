@@ -1,0 +1,49 @@
+.city-item {
+  border-radius: 25px;
+  box-shadow: 0 0 70px -10px rgba(0, 0, 0, 0.2);
+  color: white;
+  height: 420px;
+  transition: all 0.4s ease;
+  flex: 0 1 23%;
+  padding: 10px 20px;
+  background: #2b6cb0;
+  position: relative;
+  height: 100%;
+  border-radius: 25px;
+  width: 100%;
+  min-width: 270px;
+  transition: transform 300ms ease;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+
+  &__location {
+    margin-top: 10px;
+  }
+
+  &__weather-temp {
+    margin: 0;
+    font-weight: 700;
+    font-size: 55px;
+  }
+
+  &__weather {
+    font-weight: 500;
+    font-size: 24px;
+  }
+
+  &__weather-desc {
+    margin-bottom: 15px;
+  }
+
+  &__update {
+    font-style: italic;
+  }
+}
+
+
+
+
+
+

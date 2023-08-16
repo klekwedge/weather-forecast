@@ -1,6 +1,6 @@
 # SPA: WeatherApp (working with an external API service)
 
-**Вы также можете прочитать этот README на [русском](https://github.com/klekwedge/cv/blob/main/README.md)**
+**Вы также можете прочитать этот README на [русском](https://github.com/klekwedge/weather-forecast/blob/main/README.md)**
 
 ## 1 page: CityList
 - Show list of city names (stored in LocalStorage)
